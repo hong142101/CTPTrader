@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strategy>
+    <name>kkstrategy_rb_1</name>
+    <author>Sola</author>
+    <library>./strategy/kkstrategy_rb_1.py</library>
+    <position>
+        <long>
+        	<item datetime="2017-08-22 10:06:00" instrument="au1712" quantity="0" />
+        </long>
+        <short>
+        	<item datetime="2017-08-22 10:07:02" instrument="au1712" quantity="0" />
+        </short>
+    </position>
+</strategy>
