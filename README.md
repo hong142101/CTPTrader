@@ -1,0 +1,2 @@
+# CTPTrader
+away from mysql
