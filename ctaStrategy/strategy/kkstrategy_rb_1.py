@@ -13,13 +13,16 @@
 from __future__ import division
 
 import os
-from copy import *
-import datetime as dt
+import sys
+
+file_path = os.path.abspath(__file__)
+folder_path = os.path.dirname(file_path)
+ctastrategy_path = os.path.dirname(folder_path)
+root_path = os.path.dirname(ctastrategy_path)
+sys.path.append(ctastrategy_path)
+
 from ctaBase import *
 from ctaTemplate import CtaTemplate
-
-import talib
-import numpy as np
 
 
 ########################################################################
@@ -98,7 +101,6 @@ class kkstrategy_rb_1(CtaTemplate):
         """收到行情TICK推送（必须由用户继承实现）"""
         # 聚合为1分钟K线
         tickMinute = tick.datetime.minute
-        print(tick.datetime)
 
         if tickMinute != self.barMinute:
             if self.bar:
@@ -121,6 +123,7 @@ class kkstrategy_rb_1(CtaTemplate):
 
             self.bar = bar  # 这种写法为了减少一层访问，加快速度
             self.barMinute = tickMinute  # 更新当前的分钟
+
         else:  # 否则继续累加新的K线
             bar = self.bar  # 写法同样为了加快速度
 
@@ -135,7 +138,7 @@ class kkstrategy_rb_1(CtaTemplate):
         for orderID in self.orderList:
             self.cancelOrder(orderID)
         self.orderList = []
-
+        
         # 当前无仓位
         if self.long_pos == 0 and self.short_pos == 0:
             self.buyOrderID = self.buy(self.upperLimit, 1, False)
@@ -145,21 +148,22 @@ class kkstrategy_rb_1(CtaTemplate):
             self.sellOrderID = self.sell(self.lowerLimit, 1, False)
         elif self.long_pos == 0 and self.short_pos != 0:
             self.coverOrderID = self.cover(self.upperLimit, 1, False)
-
+        
         self.orderList.append(self.buyOrderID)
         self.orderList.append(self.shortOrderID)
         # 发出状态更新事件
         self.putEvent()
+        pass
 
     # ----------------------------------------------------------------------
     def onOrder(self, order):
         """收到委托变化推送（必须由用户继承实现）"""
-        print(order.__dict__)
+        # print(order.__dict__)
 
     # ----------------------------------------------------------------------
     def onTrade(self, trade):
         # 多头开仓成交后，撤消空头委托
-        print(trade.__dict__)
+        # print(trade.__dict__)
 
         if (trade.offset == "开仓") and (trade.direction == "多"):
             if self.buyOrderID in self.orderList:

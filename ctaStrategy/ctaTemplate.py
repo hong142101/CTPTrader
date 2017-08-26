@@ -9,6 +9,11 @@ import sys
 from copy import *
 import datetime as dt
 
+file_path = os.path.abspath(__file__)
+ctastrategy_path = os.path.dirname(file_path)
+root_path = os.path.dirname(ctastrategy_path)
+sys.path.append(ctastrategy_path)
+
 from ctaBase import *
 from allText import *
 

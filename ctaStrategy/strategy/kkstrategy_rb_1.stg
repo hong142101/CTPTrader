@@ -5,10 +5,10 @@
     <library>./strategy/kkstrategy_rb_1.py</library>
     <position>
         <long>
-        	<item datetime="2017-08-22 10:06:00" instrument="au1712" quantity="0" />
+        	<item datetime="2017-08-23 14:57:00" instrument="au1712" quantity="1" />
         </long>
         <short>
-        	<item datetime="2017-08-22 10:07:02" instrument="au1712" quantity="0" />
+        	<item datetime="2017-08-23 14:58:00" instrument="au1712" quantity="-1" />
         </short>
     </position>
 </strategy>
