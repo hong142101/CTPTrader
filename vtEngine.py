@@ -142,7 +142,7 @@ class MainEngine(object):
                             strategy_position = dict()
                             strategy_position['name'] = strategy_name
                             strategy_position['contract'] = str(long.get("instrument"))
-                            strategy_position['quantity'] = int(1) * int(long.get("quantity"))
+                            strategy_position['quantity'] = int(long.get("quantity"))
                             strategy_position['datetime'] = datetime.strptime(str(long.get("datetime")),
                                                                               "%Y-%m-%d %H:%M:%S")
                             strategy_positions['long'] = strategy_position
@@ -151,7 +151,7 @@ class MainEngine(object):
                             strategy_position = dict()
                             strategy_position['name'] = strategy_name
                             strategy_position['contract'] = str(short.get("instrument"))
-                            strategy_position['quantity'] = int(-1) * int(short.get("quantity"))
+                            strategy_position['quantity'] = int(short.get("quantity"))
                             strategy_position['datetime'] = datetime.strptime(str(short.get("datetime")),
                                                                               "%Y-%m-%d %H:%M:%S")
                             strategy_positions['short'] = strategy_position
